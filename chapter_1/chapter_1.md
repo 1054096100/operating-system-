@@ -4,7 +4,7 @@
 
 ####1.1 什么是操作系统
 
-
+操作系统（Operating System，简称OS）是管理和控制计算机硬件与软件资源的计算机程序，是直接运行在“裸机”上的最基本的系统软件，任何其他软件都必须在操作系统的支持下才能运行。（来自度娘）
 
 #####操作系统在计算机系统中的地位：
 
@@ -42,9 +42,121 @@
 系统调用：
 >形式上类似于过程调用，在应用编程中使用。
 
+#####操作系统举例：
 
+MS OS
+>MS DOS, MS Windows 3.x, Windows 95,$\cdots$，Windows 10，$\cdots$
+
+类UNIX
+>BSD, SRV4, Mac OS X，Linux，Android，Minix，$\cdots$
+（p.s.:Minix是其中唯一一个微内核的操作系统，其他都为宏内核。）
+
+实时OS
+>交换机、工控计算机，例如：VxWorks，pSoS，Nucleus
+（对时间的精度要求很高）
+
+######需求推动发展：
+
+器件的发展：
+>CPU处理能力、内存容量和速度、$\cdots$
+ CPU能耗上无法做到摩尔定律，Intel要活路，走多线程多核的路，~~以此为自己续上几秒~~。(@Loveall Wang非要我改成“续上几年”。) )
+
+提高资源的利用率和系统性能;
+>多道系统、分时系统、线程、虚拟化技术。
+
+方便用户：
+>文本终端、图形界面、网络服务，$\cdots$
 
 ####1.2 操作系统发展历史
+
+#####电子管时代（1945-1955）
+
+工作方式
+>用户既是程序员，又是操作员，是计算机专业人员。
+>编程语言为机器语言
+>输入输出为纸带或卡片
+
+计算机工作特点：
+>用户独占全机：不出现资源被其他用户占用，资源利用率低。
+>CPU等待用户：计算前，手工装入纸袋或卡片；计算完成后，手工卸去纸带或卡片；CPU利用率低。
+
+#####晶体管时代（1955-1965）
+
+利用磁带把若干个作业分类编成作业执行序列，每批作业由一个专门的监督程序（Monitor）自动一次处理。可使用汇编语言开发。
+
+批处理中的作业组成：
+>用户处理
+>数据
+>作业说明书（作业控制语言）
+
+批：
+>供一次加载的磁带或磁盘，通常由若干个作业组装成，在处理中使用一组相同的系统软件（系统带）
+
+#####集成电路时代（1965-1980）
+
+多道批处理的运行特征：
+>多道：内存中同时存放几个作业
+>宏观上并行运行：都处于运行状态，但都未运行完
+>微观上串行运行：各作业交替使用CPU
+
+多道批处理系统的特点
+
+优点：
+>资源利用率高：CPU和内存利用率高
+>作业吞吐量大：单位时间内完成的工作总量大
+
+缺点;
+>用户交互性差：整个作业完成后或中间出错时，才和用户交互，不利于调试和修改
+>作业平均周转时间长：短时间的周转时间显著增强
+
+######分时系统（time-sharing system）
+
+分时是指多个用户分享使用同一台计算机，多个程序分时共享硬件和软件资源。
+>多个用户分时共享：单个用户使用计算机效率低，因而允许多个应用程序同时在内存中，分别服务于不同的用户
+>前台和后台程序（foreground & background）分时：后台程序不占用终端输入输出，不与用户交互
+>通常按时间片（time slice）分配：各个程序在CPU上执行的轮换时间
+
+例如：MULTICS - Unix的“前辈”
+
+#####微处理器时代（1980-）
+
+
+
+######网络/分布式操作系统
+
+Network Operating System(NOS):
+>provides mainly file sharing
+>Each computer runs independently from other computers on the network.
+>(p.s.:every thing you send by third-party system can be viewed by their operators.pay attention to your message security)
+
+Distributed Operating System(DOS):
+>gives the impression there is a single operating syetem controlling the network.
+>network is mostly transparent - it's a powerful vritual machine.
+
+######集群系统/网络系统
+
+Clustered Systems
+>Clustering allows two or more systems to share external storage and balance CPU load.
+>>*Asymmetric clustering.* one server runs the application while other server standby.
+>>*Symmetric clustering.* all N hosts are running the application.
+
+Closely coupled system:
+>processors also have their own external memory
+>communication takes place through high-speed channels
+>Provides high reliability.
+
+实例：
+>Kerrighed, OpenSSI,openMosix
+
+Grid Computing System
+>建立在Internet技术、web技术、高性能计算等技术之上的综合软硬件的基础设施，采用开放标准，为动态参与的多个机构所构成组成的虚拟组织
+>
+
+######虚拟化技术
+
+相当于一个操作系统就是一个程序，有其他的操作系统运行着。
+/
+
 
 ####1.3 操作系统基本概念
 
